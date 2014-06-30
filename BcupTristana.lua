@@ -16,7 +16,7 @@ champsToStun = {
                 { charName = "Malzahar",        spellName = "AlZaharNetherGrasp" ,         important = 0},
                 { charName = "Karthus",         spellName = "FallenOne" ,                  important = 0},
                 { charName = "Pantheon",        spellName = "PantheonRJump" ,              important = 0},
-		            { charName = "Pantheon",        spellName = "PantheonRFall",               important = 0},
+		{ charName = "Pantheon",        spellName = "PantheonRFall",               important = 0},
                 { charName = "Varus",           spellName = "VarusQ" ,                     important = 1},
                 { charName = "Caitlyn",         spellName = "CaitlynAceintheHole" ,        important = 1},
                 { charName = "MissFortune",     spellName = "MissFortuneBulletTime" ,      important = 1},
