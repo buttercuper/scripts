@@ -68,7 +68,7 @@ function OnLoad()
 	Combo = {_W, _E, _R,_ITEMS}
 	DLib:AddToMenu(Config.Draw,Combo)
 	
-	PrintChat("<font color='#E97FA5'> >> RyukTristana Loaded!</font>")
+	PrintChat("<font color='#E97FA5'> >> BcupTristana Loaded!</font>")
 end
 
 function OnTick()
