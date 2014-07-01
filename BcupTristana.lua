@@ -16,7 +16,7 @@ champsToStun = {
                 { charName = "Malzahar",        spellName = "AlZaharNetherGrasp" ,         important = 0},
                 { charName = "Karthus",         spellName = "FallenOne" ,                  important = 0},
                 { charName = "Pantheon",        spellName = "PantheonRJump" ,              important = 0},
-		{ charName = "Pantheon",        spellName = "PantheonRFall",               important = 0},
+				{  charName = "Pantheon",        spellName = "PantheonRFall",               important = 0},
                 { charName = "Varus",           spellName = "VarusQ" ,                     important = 1},
                 { charName = "Caitlyn",         spellName = "CaitlynAceintheHole" ,        important = 1},
                 { charName = "MissFortune",     spellName = "MissFortuneBulletTime" ,      important = 1},
@@ -42,13 +42,14 @@ function OnLoad()
 	DLib:RegisterDamageSource(_W, _MAGIC, 70, 45, _MAGIC, _AP, 0.80, function() return (player:CanUseSpell(_W) == READY)end)
 	DLib:RegisterDamageSource(_E, _MAGIC, 110, 40, _MAGIC, _AP, 1, function() return (player:CanUseSpell(_E) == READY)end)
 	DLib:RegisterDamageSource(_R, _MAGIC, 300, 100, _MAGIC, _AP, 1.5, function() return (player:CanUseSpell(_R) == READY)end)
-	DFG = Item(3188,750)
+	DFG = Item(3128,750)
 	
 	Config = scriptConfig("Tristana","Tristana")
 	-- Key Binds
 	Config:addSubMenu("Key Bindings","bind")
 	Config.bind:addParam("active", "Combo", SCRIPT_PARAM_ONKEYDOWN, false, 32)
 	Config.bind:addParam("harass", "Harass", SCRIPT_PARAM_ONKEYDOWN, false, string.byte("C"))
+	Config.bind:addParam("useW", "Use W", SCRIPT_PARAM_ONKEYTOGGLE, true, string.byte("L"))
 	Config.bind:addParam("auto", "Auto Spell", SCRIPT_PARAM_ONKEYTOGGLE, true, string.byte("N"))
 	Config.bind:addParam("interrupt", "Interrupt With R", SCRIPT_PARAM_ONKEYTOGGLE, true,string.byte("L"))
 	Config:addSubMenu("Draw","Draw")
@@ -67,11 +68,11 @@ function OnLoad()
 	Combo = {_W, _E, _R,_ITEMS}
 	DLib:AddToMenu(Config.Draw,Combo)
 	
-	PrintChat("<font color='#E97FA5'> >> ButterCupTristana Loaded!</font>")
+	PrintChat("<font color='#E97FA5'> >> RyukTristana Loaded!</font>")
 end
 
 function OnTick()
-	target = STS:GetTarget(rRng)
+	target = STS:GetTarget(wRng)
 	if Config.bind.active then
 		active(target)
 	end
@@ -127,7 +128,7 @@ function castQ(target)
 end
 
 function castW(target,chance)
-	if target and W:IsInRange(target) and W:IsReady() then
+	if target and W:IsInRange(target) and W:IsReady() and Config.bind.useW then
 		wP, wC = W:GetPrediction(target)
 		if wP and wC >= chance then
 			W:Cast(wP.x,wP.z)
@@ -175,3 +176,5 @@ function auto(target)
 		castE(target)
 	end
 end
+
+
